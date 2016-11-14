@@ -1,0 +1,63 @@
+$popover-background: rgb(44, 48, 51);
+$popover-shadow: 2px 2px 10px rgb(102, 102, 102);
+
+@keyframes enter {
+	0% { transform: scale(0); }
+	90% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+}
+
+@keyframes leave {
+	0% { transform: scale(1); opacity: 1; }
+	100% { transform: scale(0); opacity: 0; }
+}
+
+.animation {
+
+	opacity: 0;
+
+	&.enter {
+		opacity: 1;
+		animation: enter 0.2s;
+	}
+
+	&.leave {
+		opacity: 0;
+		animation: leave 0.1s;
+	}
+
+}
+
+.popover {
+
+	width: 280px;
+	margin: 6px auto 0 auto;
+	padding: 14px 14px 14px 14px;
+	border-radius: 2px;
+	background-color: $popover-background;
+	box-shadow: $popover-shadow;
+
+}
+
+.arrow {
+
+	position: relative;
+	background: $popover-background;
+	box-shadow: $popover-shadow;
+
+	&:after {
+		bottom: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: "";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: transparent;
+		border-bottom-color: $popover-background;
+		border-width: 8px;
+		margin: 0 0 -1px -8px;
+	}
+
+}

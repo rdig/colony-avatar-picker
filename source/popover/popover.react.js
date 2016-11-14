@@ -4,17 +4,20 @@ const Avatar = require('../avatar/avatar.react.js');
 
 const React = require('react');
 
-module.exports = ({ data, change, current, render}) => (
-	<div className={'animation ' + ((render) ? 'enter' : 'enter leave')}>
+module.exports = ({ data, click, current, render, loading}) => (
+	<div className={'animation' + ((render) ? ' enter' : ' leave')}>
 		<span className='arrow' />
 		<ul className='popover'>
+			<p className='popover-title'>Choose your avatar</p>
 			{data.map((avatar, index) => (
 				<Avatar
 					key={avatar.id}
 					src={avatar.src}
+					title={avatar.label}
 					current={current === index}
 					position={index}
-					click={change}
+					click={click}
+					loading={loading}
 				/>
 			))}
 		</ul>

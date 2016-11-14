@@ -6,26 +6,12 @@ import SelectedAvatar from './selected-avatar.react.js';
 
 describe('SelectedAvatar Component', () => {
 
-	it('should have a `src` prop', () => {
+	it('should the required props a `src` prop', () => {
 
 		const selected = shallow(<SelectedAvatar />);
 
 		expect(selected.props().src).to.be.defined;
-
-	});
-
-	it('should have a `title` prop', () => {
-
-		const selected = shallow(<SelectedAvatar />);
-
 		expect(selected.props().title).to.be.defined;
-
-	});
-
-	it('should have a `toggle` prop', () => {
-
-		const selected = shallow(<SelectedAvatar />);
-
 		expect(selected.props().toggle).to.be.defined;
 
 	});

@@ -1,3 +1,6 @@
+$page-background: #ffffff;
+$current-border: rgb(155, 160, 163);
+
 .selected-avatar {
 
 	display: inline-block;
@@ -8,12 +11,12 @@
 	background-position: center center !important;
 	border-radius: 50%;
 	margin: 20px 0 0 0;
-	border: 1px solid transparent;
+	border: 1px solid $page-background;
 	cursor: pointer;
 
 	&:hover,
 	&:active {
-		border: 1px solid rgb(155, 160, 163);
+		border: 1px solid $current-border;
 	}
 
 }

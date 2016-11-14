@@ -7,35 +7,15 @@ import Avatar from '../avatar/avatar.react.js';
 
 describe('Popover Component', () => {
 
-	it('should have a `data` prop', () => {
+	it('should have the required props', () => {
 
 		const popover = shallow(<Popover data={[]} />);
 
 		expect(popover.props().data).to.be.defined;
-
-	});
-
-	it('should have a `change` prop', () => {
-
-		const popover = shallow(<Popover  data={[]} />);
-
-		expect(popover.props().change).to.be.defined;
-
-	});
-
-	it('should have a `current` prop', () => {
-
-		const popover = shallow(<Popover  data={[]} />);
-
+		expect(popover.props().click).to.be.defined;
 		expect(popover.props().current).to.be.defined;
-
-	});
-
-	it('should have a `render` prop', () => {
-
-		const popover = shallow(<Popover data={[]} />);
-
 		expect(popover.props().render).to.be.defined;
+		expect(popover.props().loading).to.be.defined;
 
 	});
 
@@ -55,6 +35,14 @@ describe('Popover Component', () => {
 
 	});
 
+	it ('should have a title', () => {
+
+		const popover = shallow(<Popover data={[]} />);
+
+		expect(popover.find('p.popover-title')).to.have.length(1);
+
+	});
+
 	it ('should have an unordered list element', () => {
 
 		const popover = shallow(<Popover data={[]} />);
@@ -66,18 +54,9 @@ describe('Popover Component', () => {
 	it ('should contain 6 child <Avatar /> components', () => {
 
 		const data = [{}, {}, {}, {}, {}, {}];
-		const popover = mount(<Popover data={data} />);
+		const popover = mount(<Popover data={data} click={(event, position) => {}} />);
 
 		expect(popover.find(Avatar)).to.have.length(6);
-
-	});
-
-	it ('should contain 12 child <Avatar /> components', () => {
-
-		const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
-		const popover = mount(<Popover data={data} />);
-
-		expect(popover.find(Avatar)).to.have.length(12);
 
 	});
 

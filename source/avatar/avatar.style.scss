@@ -1,0 +1,72 @@
+$popover-background: rgb(44, 48, 51);
+$selected-border: rgb(122, 161, 178);
+$hover-border: rgb(155, 160, 163);
+$overlay: rgba(122, 161, 178, .2);
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+li {
+	display: inline;
+	margin: 0 4px 0 0;
+
+	&:nth-child(5) {
+		margin: 0 0 0 0;
+	}
+
+}
+
+.avatar {
+
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background-size: contain !important;
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
+	border-radius: 50%;
+	border: 3px solid $popover-background;
+	cursor: pointer;
+
+	&.selected {
+		border: 3px solid $selected-border;
+	}
+
+}
+
+.overlay {
+
+	height: 60px;
+	width: 60px;
+	margin: -3px 0 0 -3px;
+
+	&:hover {
+		border-radius: 50%;
+		border: 3px solid $hover-border;
+		background-color: $overlay;
+	}
+
+	&.hide {
+		display: none;
+	}
+
+}
+
+.loading {
+
+	height: 60px;
+	width: 60px;
+	margin: -3px 0 0 -3px;
+	border-radius: 50%;
+	border: 3px solid $selected-border;
+	border-left: 3px solid $popover-background;
+	animation: spin 1s linear infinite;
+	display: none;
+
+	&.show {
+		display: block;
+	}
+
+}

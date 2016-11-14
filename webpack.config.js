@@ -4,15 +4,6 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /*
- * Set `dev` as the default environment.
- * Set it to a new variable, don't mutate node's process object
- */
-let env = 'dev';
-if (process.env.NODE_ENV) {
-	env = process.env.NODE_ENV;
-}
-
-/*
  * Modify this object if you want to change your file / folder naming scheme
  */
 const pathLocations = {
@@ -34,13 +25,10 @@ const htmlInject = new HtmlWebpackPlugin({
 	 * If we are in dev mode, add a hash to the end of the included files to prevent the browser
 	 * from caching them
 	 */
-	hash: env === 'dev'
+	hash: true
 });
 
-/*
- * Composable configuration objects
- */
-const composableConfig = {
+module.exports = {
 	entry: [ pathLocations.source + '/' + pathLocations.entryFile ],
 	output: {
 		filename: '[name].js',
@@ -118,39 +106,10 @@ const composableConfig = {
 			colors: true
 		},
 		contentBase: pathLocations.build
+	},
+	externals: {
+		'cheerio': 'window',
+		'react/lib/ExecutionEnvironment': true,
+		'react/lib/ReactContext': true,
 	}
 };
-
-/*
- * We have to do this inside a function / iife to avoid global naming conflict for `module`
- */
-module.exports = ((configObject, environment) => {
-	const {
-		entry,
-		output,
-		module,
-		plugins,
-		postcss,
-		devtool,
-		devServer
-	} = configObject;
-	/*
-	 * Testing configuration.
-	 * Don't input/output nothing, just using webpack for preprocessing / bundling / requiring
-	 */
-	if (environment === 'test') {
-		return {}
-	}
-	/*
-	 * Development configuration (Default)
-	 */
-	return {
-		entry,
-		output,
-		module,
-		plugins,
-		postcss,
-		devtool,
-		devServer
-	}
-})(composableConfig, env)

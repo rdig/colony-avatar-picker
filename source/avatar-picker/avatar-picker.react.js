@@ -4,6 +4,9 @@ const ReactDOM = require('react-dom');
 const SelectedAvatar = require('../selected-avatar/selected-avatar.react.js');
 const Popover = require('../popover/popover.react.js');
 
+/*
+ * This is the only statefull component, since only this one contains any logic, the rest are just for presentation.
+ */
 class AvatarPicker extends React.Component {
 	constructor(props) {
 		super(props);
